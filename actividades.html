@@ -7,65 +7,138 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    *{
+      box-sizing:border-box;
+    }
+
     body{
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg,#9C4DFB,#AF57F1);
       margin:0;
       padding:0;
-      text-align:center;
       color:white;
+      text-align:center;
     }
 
-    .container{
-      max-width:1000px;
-      margin:auto;
-      padding:40px 20px;
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      width:100%;
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(10px);
+      box-shadow:0 2px 10px rgba(0,0,0,0.15);
     }
 
-    .top-button{
+    .topbar-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:white;
+      font-weight:bold;
+      font-size:16px;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      border:2px solid white;
+      object-fit:cover;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .menu a{
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      padding:10px 14px;
+      border-radius:10px;
+      transition:0.2s;
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      background:white;
-      color:black;
-      text-decoration:none;
-      padding:12px 20px;
-      border-radius:12px;
-      font-weight:bold;
-      margin-bottom:25px;
-      transition:0.2s;
+      gap:8px;
     }
 
-    .top-button:hover{
-      transform:scale(1.05);
-      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    .menu a:hover,
+    .menu a.active{
+      background:rgba(255,255,255,0.18);
+    }
+
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+      padding:40px 20px;
+      animation:aparecer 0.8s ease;
+    }
+
+    @keyframes aparecer{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
     }
 
     h1{
-      margin-bottom:20px;
+      margin:0 0 12px 0;
+      font-size:34px;
+    }
+
+    .subtitle{
+      opacity:0.92;
+      margin-bottom:28px;
+      font-size:17px;
+    }
+
+    .calendar-box{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(8px);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.18);
     }
 
     .calendar{
       width:100%;
-      max-width:900px;
-      margin:0 auto;
       border-radius:18px;
       overflow:hidden;
-      box-shadow:0 10px 25px rgba(0,0,0,0.3);
       background:white;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
     }
 
     .calendar iframe{
       width:100%;
-      height:700px;
+      height:720px;
       border:0;
       display:block;
     }
 
     .footer{
-      margin-top:30px;
+      padding:18px 20px 30px 20px;
       font-size:14px;
-      opacity:0.8;
+      opacity:0.85;
     }
 
     .whatsapp-float{
@@ -83,7 +156,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      z-index:100;
+      z-index:1100;
       transition:0.3s;
       text-decoration:none;
     }
@@ -93,35 +166,81 @@
     }
 
     @media (max-width: 768px){
+      .topbar-inner{
+        flex-direction:column;
+        gap:12px;
+      }
+
+      .brand{
+        font-size:15px;
+      }
+
+      .menu{
+        width:100%;
+      }
+
+      .menu a{
+        font-size:14px;
+        padding:9px 12px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+
       .calendar iframe{
-        height:600px;
+        height:620px;
+      }
+
+      .whatsapp-float{
+        width:55px;
+        height:55px;
+        font-size:28px;
+        bottom:20px;
+        right:20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <a href="index.html" class="top-button">
-      <i class="fa-solid fa-arrow-left"></i> Volver
-    </a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand">
+        <img src="ESCUDO2.png" alt="Escudo Falla Rubén Darío - Fray Luis Colomer">
+        <span>Falla Rubén Darío - Fray Luis Colomer</span>
+      </a>
 
+      <nav class="menu">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a href="actividades.html" class="active"><i class="fa-solid fa-calendar-days"></i> Actividades</a>
+        <a href="https://instagram.com/fallarubendario/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="https://facebook.com/dariocolomer" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a href="mailto:secretaria_rudayfraluco@hotmail.com"><i class="fa-solid fa-envelope"></i> Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
     <h1>Actividades</h1>
+    <div class="subtitle">Consulta aquí el calendario oficial de la falla</div>
 
-    <div class="calendar">
-      <iframe
-        src="https://calendar.google.com/calendar/embed?src=redessocialesfallarubendario%40gmail.com&ctz=Europe%2FMadrid&mode=AGENDA"
-        frameborder="0"
-        scrolling="no">
-      </iframe>
+    <div class="calendar-box">
+      <div class="calendar">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=redessocialesfallarubendario%40gmail.com&ctz=Europe%2FMadrid&mode=AGENDA"
+          frameborder="0"
+          scrolling="no">
+        </iframe>
+      </div>
     </div>
+  </main>
 
-    <div class="footer">
-      📅 Calendario oficial de actividades
-    </div>
+  <div class="footer">
+    📅 Calendario oficial de actividades
   </div>
 
-  <a href="https://wa.me/34600000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
