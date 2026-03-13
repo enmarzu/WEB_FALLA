@@ -1,184 +1,137 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Falla Rubén Darío - Fray Luis Colomer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falla Rubén Darío - Fray Luis Colomer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg,#9C4DFB,#AF57F1);
+      margin:0;
+      padding:0;
+      text-align:center;
+      color:white;
+    }
 
-<style>
+    .container{
+      max-width:420px;
+      margin:auto;
+      padding:40px 20px;
+    }
 
-body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#9C4DFB,#AF57F1);
-    margin:0;
-    padding:0;
-    text-align:center;
-    color:white;
-}
+    .logo{
+      width:120px;
+      border-radius:50%;
+      border:4px solid white;
+    }
 
-.container{
-    max-width:420px;
-    margin:auto;
-    padding:40px 20px;
-}
+    h1{
+      margin-top:15px;
+      margin-bottom:5px;
+    }
 
-.logo{
-    width:120px;
-    border-radius:50%;
-    border:4px solid white;
-}
+    p{
+      opacity:0.9;
+    }
 
-h1{
-    margin-top:15px;
-    margin-bottom:5px;
-}
+    .links{
+      margin-top:30px;
+    }
 
-p{
-    opacity:0.9;
-}
+    .links a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      background:white;
+      color:black;
+      text-decoration:none;
+      padding:15px;
+      margin:12px 0;
+      border-radius:12px;
+      font-size:18px;
+      font-weight:bold;
+      transition:0.2s;
+    }
 
-.links{
-    margin-top:30px;
-}
+    .links a:hover{
+      transform:scale(1.05);
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
 
-.links a{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    background:white;
-    color:black;
-    text-decoration:none;
-    padding:15px;
-    margin:12px 0;
-    border-radius:12px;
-    font-size:18px;
-    font-weight:bold;
-    transition:0.2s;
-}
+    .footer{
+      margin-top:30px;
+      font-size:14px;
+      opacity:0.8;
+    }
 
-.links a:hover{
-    transform:scale(1.05);
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
+    .whatsapp-float{
+      position:fixed;
+      width:60px;
+      height:60px;
+      bottom:25px;
+      right:25px;
+      background:#25D366;
+      color:white;
+      border-radius:50%;
+      text-align:center;
+      font-size:30px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.3);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:100;
+      transition:0.3s;
+      text-decoration:none;
+    }
 
-/* CALENDARIO */
-
-.calendar-wrapper{
-    margin:40px auto;
-    display:flex;
-    justify-content:center;
-    padding:0 10px;
-}
-
-.calendar{
-    width:100%;
-    max-width:900px;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-    background:white;
-}
-
-.calendar iframe{
-    width:100%;
-    height:650px;
-    border:0;
-}
-
-/* FOOTER */
-
-.footer{
-    margin-top:20px;
-    font-size:14px;
-    opacity:0.8;
-}
-
-/* BOTON WHATSAPP FLOTANTE */
-
-.whatsapp-float{
-position:fixed;
-width:60px;
-height:60px;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:white;
-border-radius:50%;
-text-align:center;
-font-size:30px;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:100;
-transition:0.3s;
-text-decoration:none;
-}
-
-.whatsapp-float:hover{
-transform:scale(1.1);
-}
-
-</style>
+    .whatsapp-float:hover{
+      transform:scale(1.1);
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="container">
 
-<img class="logo" src="ESCUDO2.png">
+    <img class="logo" src="ESCUDO2.png" alt="Escudo Falla Rubén Darío - Fray Luis Colomer">
 
-<h1>Falla Rubén Darío - Fray Luis Colomer</h1>
-<p>Valencia</p>
+    <h1>Falla Rubén Darío - Fray Luis Colomer</h1>
+    <p>Valencia</p>
 
-<div class="links">
+    <div class="links">
+      <a href="https://instagram.com/fallarubendario/" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
 
-<a href="https://instagram.com/fallarubendario/" target="_blank">
-<i class="fa-brands fa-instagram"></i> Instagram
-</a>
+      <a href="https://facebook.com/dariocolomer" target="_blank">
+        <i class="fa-brands fa-facebook"></i> Facebook
+      </a>
 
-<a href="https://facebook.com/dariocolomer" target="_blank">
-<i class="fa-brands fa-facebook"></i> Facebook
-</a>
+      <a href="https://www.tiktok.com/@tu_falla" target="_blank">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
 
-<a href="https://www.tiktok.com/@fallarubendario" target="_blank">
-<i class="fa-brands fa-tiktok"></i> TikTok
-</a>
+      <a href="actividades.html">
+        <i class="fa-solid fa-calendar-days"></i> Actividades
+      </a>
 
-<a href="mailto:secretaria_rudayfraluco@hotmail.com">
-<i class="fa-solid fa-envelope"></i> + INFO E-MAIL
-</a>
+      <a href="mailto:secretaria_rudayfraluco@hotmail.com">
+        <i class="fa-solid fa-envelope"></i> + INFO E-MAIL
+      </a>
+    </div>
 
-</div>
+    <div class="footer">
+      🔥 Web oficial de la falla
+    </div>
+  </div>
 
-</div>
-
-<!-- CALENDARIO -->
-
-<div class="calendar-wrapper">
-<div class="calendar">
-
-<iframe 
-src="https://calendar.google.com/calendar/embed?src=redessocialesfallarubendario%40gmail.com&ctz=Europe%2FMadrid&mode=AGENDA"
-frameborder="0"
-scrolling="no">
-</iframe>
-
-</div>
-</div>
-
-<div class="footer">
-🔥 Web oficial de la falla
-</div>
-
-<!-- BOTON WHATSAPP -->
-
-<a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
+  <a href="https://wa.me/34600000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
 </body>
 </html>
