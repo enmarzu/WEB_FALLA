@@ -215,7 +215,29 @@
     .whatsapp-float:hover{
       transform:scale(1.1);
     }
+.maps-float{
+position:fixed;
+width:60px;
+height:60px;
+bottom:100px;
+right:25px;
+background:#4285F4;
+color:white;
+border-radius:50%;
+text-align:center;
+font-size:28px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:1100;
+transition:0.3s;
+text-decoration:none;
+}
 
+.maps-float:hover{
+transform:scale(1.1);
+}
     @media (max-width: 768px){
       .topbar-inner{
         position:relative;
@@ -395,32 +417,7 @@ height:320px;
     </section>
   </main>
 
- <section class="section" id="mapa">
-  <div class="card map-card">
 
-    <h2>Cómo llegar al casal</h2>
-
-    <p class="map-text">
-      Calle Historiador Claudio Sánchez Albornoz 5<br>
-      46021 Valencia
-    </p>
-
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps?q=39.476928,-0.352430&output=embed"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <a class="map-button"
-       href="https://www.google.com/maps?q=39.476928,-0.352430"
-       target="_blank">
-       <i class="fa-solid fa-route"></i> Abrir en Google Maps
-    </a>
-
-  </div>
-</section>
   <div class="footer">
     🔥 Web oficial de la falla
   </div>
@@ -428,7 +425,12 @@ height:320px;
   <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
-
+<a href="https://www.google.com/maps?q=39.476928,-0.352430"
+   class="maps-float"
+   target="_blank"
+   aria-label="Cómo llegar">
+   <i class="fa-solid fa-location-dot"></i>
+</a>
 <script>
 const menuToggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
@@ -459,6 +461,7 @@ document.querySelectorAll(".menu a").forEach(link => {
 
 </body>
 </html>
+
 
 
 
