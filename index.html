@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Falla Rubén Darío - Fray Luis Colomer</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -10,7 +11,7 @@
 
 body{
     font-family: Arial, sans-serif;
-   background: linear-gradient(135deg,#9C4DFB,#AF57F1);
+    background: linear-gradient(135deg,#9C4DFB,#AF57F1);
     margin:0;
     padding:0;
     text-align:center;
@@ -63,11 +64,39 @@ p{
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
+/* CALENDARIO */
+
+.calendar-wrapper{
+    margin:40px auto;
+    display:flex;
+    justify-content:center;
+    padding:0 10px;
+}
+
+.calendar{
+    width:100%;
+    max-width:900px;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    background:white;
+}
+
+.calendar iframe{
+    width:100%;
+    height:650px;
+    border:0;
+}
+
+/* FOOTER */
+
 .footer{
-    margin-top:30px;
+    margin-top:20px;
     font-size:14px;
     opacity:0.8;
 }
+
+/* BOTON WHATSAPP FLOTANTE */
 
 .whatsapp-float{
 position:fixed;
@@ -86,30 +115,13 @@ align-items:center;
 justify-content:center;
 z-index:100;
 transition:0.3s;
+text-decoration:none;
 }
 
 .whatsapp-float:hover{
 transform:scale(1.1);
 }
-.calendar-wrapper{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    padding:0 10px;
-}
 
-.calendar{
-    width:100%;
-    max-width:900px;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
-
-.calendar iframe{
-    width:100%;
-    height:650px;
-}    
 </style>
 </head>
 
@@ -132,7 +144,7 @@ transform:scale(1.1);
 <i class="fa-brands fa-facebook"></i> Facebook
 </a>
 
-<a href="https://www.tiktok.com/@tu_falla" target="_blank">
+<a href="https://www.tiktok.com/@fallarubendario" target="_blank">
 <i class="fa-brands fa-tiktok"></i> TikTok
 </a>
 
@@ -142,38 +154,31 @@ transform:scale(1.1);
 
 </div>
 
+</div>
+
+<!-- CALENDARIO -->
 
 <div class="calendar-wrapper">
-  <div class="calendar">
-    <iframe
-      src="https://calendar.google.com/calendar/embed?src=redessocialesfallarubendario%40gmail.com&ctz=Europe%2FMadrid" &mode=AGENDA"
-      style="border:0"
-      frameborder="0"
-      scrolling="no">
-    </iframe>
-  </div>
+<div class="calendar">
+
+<iframe 
+src="https://calendar.google.com/calendar/embed?src=redessocialesfallarubendario%40gmail.com&ctz=Europe%2FMadrid&mode=AGENDA"
+frameborder="0"
+scrolling="no">
+</iframe>
+
 </div>
-    
+</div>
+
 <div class="footer">
 🔥 Web oficial de la falla
 </div>
 
-</div>
+<!-- BOTON WHATSAPP -->
 
 <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank">
 <i class="fa-brands fa-whatsapp"></i>
 </a>
-    
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
