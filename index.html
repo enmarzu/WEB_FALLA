@@ -48,6 +48,7 @@
       color:white;
       font-weight:bold;
       font-size:16px;
+      text-align:left;
     }
 
     .brand img{
@@ -56,6 +57,15 @@
       border-radius:50%;
       border:2px solid white;
       object-fit:cover;
+    }
+
+    .menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      color:white;
+      font-size:28px;
+      cursor:pointer;
     }
 
     .menu{
@@ -207,21 +217,41 @@
 
     @media (max-width: 768px){
       .topbar-inner{
-        flex-direction:column;
-        gap:12px;
+        position:relative;
+        flex-wrap:wrap;
+        justify-content:space-between;
       }
 
       .brand{
         font-size:15px;
+        max-width:calc(100% - 60px);
+      }
+
+      .menu-toggle{
+        display:block;
       }
 
       .menu{
+        display:none;
         width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        gap:8px;
+        margin-top:12px;
+        padding-top:12px;
+        border-top:1px solid rgba(255,255,255,0.2);
+      }
+
+      .menu.show{
+        display:flex;
       }
 
       .menu a{
-        font-size:14px;
-        padding:9px 12px;
+        width:100%;
+        justify-content:center;
+        font-size:15px;
+        padding:12px;
+        background:rgba(255,255,255,0.08);
       }
 
       h1{
@@ -255,11 +285,16 @@
         <span>Falla Rubén Darío - Fray Luis Colomer</span>
       </a>
 
-      <nav class="menu">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="menu" id="menu">
         <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Inicio</a>
         <a href="actividades.html"><i class="fa-solid fa-calendar-days"></i> Actividades</a>
         <a href="https://instagram.com/fallarubendario/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
         <a href="https://facebook.com/dariocolomer" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a href="https://www.tiktok.com/@fallarubendario" target="_blank"><i class="fa-brands fa-tiktok"></i> Facebook</a>
         <a href="mailto:secretaria_rudayfraluco@hotmail.com"><i class="fa-solid fa-envelope"></i> Contacto</a>
       </nav>
     </div>
@@ -281,12 +316,15 @@
         <a href="https://facebook.com/dariocolomer" target="_blank">
           <i class="fa-brands fa-facebook"></i> Facebook
         </a>
-       <a href="https://www.tiktok.com/@fallarubendario" target="_blank">
+         <a href="https://www.tiktok.com/@fallarubendario" target="_blank">
         <i class="fa-brands fa-tiktok"></i> TikTok
-      </a>
+         </a>
         <a href="mailto:secretaria_rudayfraluco@hotmail.com">
           <i class="fa-solid fa-envelope"></i> + INFO E-MAIL
         </a>
+       
+     
+
       </div>
     </section>
 
@@ -308,6 +346,15 @@
   <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+  </script>
 
 </body>
 </html>
