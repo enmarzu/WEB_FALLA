@@ -229,6 +229,29 @@
         bottom:20px;
         right:20px;
       }
+      .maps-float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:100px;
+        right:25px;
+        background:#4285F4;
+        color:white;
+        border-radius:50%;
+        text-align:center;
+        font-size:28px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.3);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        z-index:1100;
+        transition:0.3s;
+        text-decoration:none;
+        }
+
+.maps-float:hover{
+transform:scale(1.1);
+}
     }
   </style>
 </head>
@@ -278,7 +301,12 @@
   <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
-
+<a href="https://www.google.com/maps?q=39.476928,-0.352430"
+   class="maps-float"
+   target="_blank"
+   aria-label="Cómo llegar">
+   <i class="fa-solid fa-location-dot"></i>
+</a>
 <script>
 const menuToggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
