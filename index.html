@@ -390,6 +390,13 @@ padding:14px;
 font-size:26px;
 }
 }
+    .countdown-text{
+font-size:18px;
+margin-top:10px;
+margin-bottom:10px;
+font-weight:bold;
+opacity:0.95;
+}
   </style>
 </head>
 <body>
@@ -459,7 +466,9 @@ font-size:26px;
 <section class="section">
   <div class="card countdown-card">
     <h2>Cuenta atrás para Fallas 2027</h2>
-
+<p id="countdown-text" class="countdown-text">
+🔥 Faltan...
+</p>
     <div id="countdown" class="countdown">
       <div><span id="days">0</span><small>días</small></div>
       <div><span id="hours">0</span><small>horas</small></div>
@@ -526,6 +535,19 @@ function updateCountdown(){
   }
 
   const days = Math.floor(distance / (1000*60*60*24));
+ let text = "";
+
+if(days > 30){
+  text = "🔥 Faltan " + days + " días para Fallas";
+} else if(days > 7){
+  text = "🎆 ¡Ya queda poco! " + days + " días";
+} else if(days > 1){
+  text = "🔥 ¡Cuenta atrás final! " + days + " días";
+} else {
+  text = "🎉 ¡Mañana empiezan las Fallas!";
+}
+
+document.getElementById("countdown-text").textContent = text;
   const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
   const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
   const seconds = Math.floor((distance % (1000*60)) / 1000);
