@@ -348,6 +348,48 @@ box-shadow:0 8px 22px rgba(0,0,0,0.2);
 height:320px;
 }
 }
+.countdown-card{
+text-align:center;
+}
+
+.countdown{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.countdown div{
+background:rgba(255,255,255,0.15);
+padding:18px 16px;
+min-width:95px;
+border-radius:16px;
+box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+
+.countdown span{
+display:block;
+font-size:32px;
+font-weight:bold;
+margin-bottom:6px;
+}
+
+.countdown small{
+font-size:14px;
+opacity:0.9;
+}
+
+@media (max-width:768px){
+.countdown div{
+min-width:80px;
+padding:14px;
+}
+
+.countdown span{
+font-size:26px;
+}
+}
   </style>
 </head>
 <body>
@@ -414,7 +456,19 @@ height:320px;
       </div>
     </section>
   </main>
+<section class="section">
+  <div class="card countdown-card">
+    <h2>Cuenta atrás para Fallas 2027</h2>
 
+    <div id="countdown" class="countdown">
+      <div><span id="days">0</span><small>días</small></div>
+      <div><span id="hours">0</span><small>horas</small></div>
+      <div><span id="minutes">0</span><small>min</small></div>
+      <div><span id="seconds">0</span><small>seg</small></div>
+    </div>
+
+  </div>
+</section>
 
   <div class="footer">
     🔥 Web oficial de la falla
@@ -458,7 +512,33 @@ document.querySelectorAll(".menu a").forEach(link => {
   });
 });
 </script>
+<script>
+const targetDate = new Date("March 15, 2027 00:00:00").getTime();
 
+function updateCountdown(){
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  if(distance <= 0){
+    document.getElementById("countdown").innerHTML =
+      "<div><span>🎆</span><small>¡Ya son Fallas!</small></div>";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
 
