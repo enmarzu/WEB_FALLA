@@ -1,574 +1,367 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Falla Rubén Darío - Fray Luis Colomer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falla Rubén Darío - Fray Luis Colomer</title>
 
-  <style>
-    *{
-      box-sizing:border-box;
-    }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    body{
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg,#9C4DFB,#AF57F1);
-      margin:0;
-      padding:0;
-      color:white;
-      text-align:center;
-    }
+<style>
 
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      width:100%;
-      background:rgba(255,255,255,0.12);
-      backdrop-filter:blur(10px);
-      box-shadow:0 2px 10px rgba(0,0,0,0.15);
-    }
+*{
+  box-sizing:border-box;
+}
 
-    .topbar-inner{
-      max-width:1100px;
-      margin:0 auto;
-      padding:14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#9C4DFB,#AF57F1);
+  margin:0;
+  padding:0;
+  color:white;
+  text-align:center;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      color:white;
-      font-weight:bold;
-      font-size:16px;
-      text-align:left;
-    }
+/* NAVBAR */
 
-    .brand img{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      border:2px solid white;
-      object-fit:cover;
-    }
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(10px);
+  box-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
 
-    .menu-toggle{
-      display:none;
-      background:none;
-      border:none;
-      color:white;
-      font-size:28px;
-      cursor:pointer;
-    }
+.topbar-inner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      justify-content:center;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+}
 
-    .menu a{
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-      padding:10px 14px;
-      border-radius:10px;
-      transition:0.2s;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:2px solid white;
+}
 
-    .menu a:hover,
-    .menu a.active{
-      background:rgba(255,255,255,0.18);
-    }
+/* MENU */
 
-    .hero{
-      max-width:700px;
-      margin:0 auto;
-      padding:50px 20px 30px 20px;
-      animation:aparecer 0.8s ease;
-    }
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
 
-    @keyframes aparecer{
-      from{
-        opacity:0;
-        transform:translateY(20px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
+.menu{
+  display:flex;
+  gap:12px;
+}
 
-    .logo-main{
-      width:130px;
-      border-radius:50%;
-      border:4px solid white;
-      box-shadow:0 8px 25px rgba(0,0,0,0.25);
-    }
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  padding:10px 14px;
+  border-radius:10px;
+  transition:0.2s;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
 
-    h1{
-      margin:18px 0 8px 0;
-      font-size:34px;
-      line-height:1.2;
-    }
+.menu a:hover,
+.menu a.active{
+  background:rgba(255,255,255,0.18);
+}
 
-    .subtitle{
-      opacity:0.92;
-      font-size:18px;
-      margin-bottom:28px;
-    }
+/* HERO */
 
-    .cta-buttons{
-      max-width:420px;
-      margin:0 auto;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
+.hero{
+  max-width:700px;
+  margin:auto;
+  padding:50px 20px;
+}
 
-    .cta-buttons a{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      background:white;
-      color:black;
-      text-decoration:none;
-      padding:15px;
-      border-radius:14px;
-      font-size:18px;
-      font-weight:bold;
-      transition:0.2s;
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-      
-    }
+.logo-main{
+  width:130px;
+  border-radius:50%;
+  border:4px solid white;
+}
 
-    .cta-buttons a:hover{
-      transform:scale(1.03);
-      box-shadow:0 8px 22px rgba(0,0,0,0.2);
-    }
+h1{
+  margin:18px 0 8px;
+  font-size:34px;
+}
 
-    .section{
-      max-width:1000px;
-      margin:30px auto 0 auto;
-      padding:0 20px 40px 20px;
-    }
+.subtitle{
+  opacity:0.9;
+  margin-bottom:25px;
+}
 
-    .card{
-      background:rgba(255,255,255,0.12);
-      backdrop-filter:blur(8px);
-      border-radius:20px;
-      padding:24px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.18);
-    }
+/* BOTONES */
 
-    .card h2{
-      margin-top:0;
-      margin-bottom:10px;
-      font-size:28px;
-    }
+.cta-buttons{
+  max-width:420px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
 
-    .card p{
-      margin:0;
-      opacity:0.95;
-      line-height:1.6;
-    }
+.cta-buttons a{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  background:white;
+  color:black;
+  padding:15px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.2s;
+}
 
-    .footer{
-      padding:18px 20px 30px 20px;
-      font-size:14px;
-      opacity:0.85;
-    }
+.cta-buttons a:hover{
+  transform:scale(1.05);
+}
 
-    .whatsapp-float{
-      position:fixed;
-      width:60px;
-      height:60px;
-      bottom:25px;
-      right:25px;
-      background:#25D366;
-      color:white;
-      border-radius:50%;
-      text-align:center;
-      font-size:30px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.3);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index:1100;
-      transition:0.3s;
-      text-decoration:none;
-    }
+/* TARJETA */
 
-    .whatsapp-float:hover{
-      transform:scale(1.1);
-    }
+.section{
+  max-width:1000px;
+  margin:auto;
+  padding:0 20px 40px;
+}
+
+.card{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(8px);
+  border-radius:20px;
+  padding:24px;
+}
+
+/* FOOTER */
+
+.footer{
+  padding:20px;
+  font-size:14px;
+}
+
+.countdown-text{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+/* BOTONES FLOTANTES */
+
 .maps-float{
-position:fixed;
-width:60px;
-height:60px;
-bottom:100px;
-right:25px;
-background:#4285F4;
-color:white;
-border-radius:50%;
-text-align:center;
-font-size:28px;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:1100;
-transition:0.3s;
-text-decoration:none;
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:25px;
+  right:25px;
+  background:#4285F4;
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  text-decoration:none;
 }
 
-.maps-float:hover{
-transform:scale(1.1);
-}
-    @media (max-width: 768px){
-      .topbar-inner{
-        position:relative;
-        flex-wrap:wrap;
-        justify-content:space-between;
-      }
-
-      .brand{
-        font-size:15px;
-        max-width:calc(100% - 60px);
-      }
-
-      .menu-toggle{
-        display:block;
-      }
-
-      .menu{
-        display:none;
-        width:100%;
-        flex-direction:column;
-        align-items:stretch;
-        gap:8px;
-        margin-top:12px;
-        padding-top:12px;
-        border-top:1px solid rgba(255,255,255,0.2);
-      }
-
-      .menu.show{
-        display:flex;
-      }
-
-      .menu a{
-        width:100%;
-        justify-content:center;
-        font-size:15px;
-        padding:12px;
-        background:rgba(255,255,255,0.08);
-      }
-
-      h1{
-        font-size:28px;
-      }
-
-      .subtitle{
-        font-size:16px;
-      }
-
-      .cta-buttons a{
-        font-size:16px;
-      }
-
-      .whatsapp-float{
-        width:55px;
-        height:55px;
-        font-size:28px;
-        bottom:20px;
-        right:20px;
-      }
-    }
-.map-card{
-text-align:center;
-}
-
-.map-text{
-margin-bottom:20px;
-}
-
-.map-container{
-width:100%;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-background:white;
-margin-top:20px;
-}
-
-.map-container iframe{
-width:100%;
-height:400px;
-border:0;
-display:block;
-}
-
-.map-button{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-margin-top:20px;
-background:white;
-color:black;
-text-decoration:none;
-padding:14px 18px;
-border-radius:14px;
-font-size:16px;
-font-weight:bold;
-transition:0.2s;
-box-shadow:0 6px 18px rgba(0,0,0,0.12);
-}
-
-.map-button:hover{
-transform:scale(1.05);
-box-shadow:0 8px 22px rgba(0,0,0,0.2);
-}
+/* RESPONSIVE */
 
 @media (max-width:768px){
-.map-container iframe{
-height:320px;
-}
-}
-.countdown-card{
-text-align:center;
+
+.menu-toggle{
+  display:block;
 }
 
-.countdown{
-margin-top:20px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
+.menu{
+  display:none;
+  flex-direction:column;
+  width:100%;
 }
 
-.countdown div{
-background:rgba(255,255,255,0.15);
-padding:18px 16px;
-min-width:95px;
-border-radius:16px;
-box-shadow:0 6px 18px rgba(0,0,0,0.15);
+.menu.show{
+  display:flex;
 }
 
-.countdown span{
-display:block;
-font-size:32px;
-font-weight:bold;
-margin-bottom:6px;
+.menu a{
+  justify-content:center;
+  background:rgba(255,255,255,0.08);
 }
 
-.countdown small{
-font-size:14px;
-opacity:0.9;
+h1{
+  font-size:26px;
 }
 
-@media (max-width:768px){
-.countdown div{
-min-width:80px;
-padding:14px;
 }
 
-.countdown span{
-font-size:26px;
-}
-}
-    .countdown-text{
-font-size:18px;
-margin-top:10px;
-margin-bottom:10px;
-font-weight:bold;
-opacity:0.95;
-}
-  </style>
+</style>
 </head>
+
 <body>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a href="index.html" class="brand">
-        <img src="ESCUDO2.png" alt="Escudo Falla Rubén Darío - Fray Luis Colomer">
-        <span>Falla Rubén Darío - Fray Luis Colomer</span>
-      </a>
+<header class="topbar">
+  <div class="topbar-inner">
 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+    <a href="index.html" class="brand">
+      <img src="ESCUDO2.png">
+      Falla Rubén Darío
+    </a>
 
-      <nav class="menu" id="menu">
-        <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Inicio</a>
-        <a href="actividades.html"><i class="fa-solid fa-calendar-days"></i> Actividades</a>
-        <a href="https://instagram.com/fallarubendario/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
-        <a href="https://facebook.com/dariocolomer" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
-        <a href="https://www.tiktok.com/@fallarubendario" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-        <a href="mailto:secretaria_rudayfraluco@hotmail.com"><i class="fa-solid fa-envelope"></i> Contacto</a>
-        
-      </nav>
-    </div>
-  </header>
+    <button class="menu-toggle" id="menu-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
-  <main>
-    <section class="hero">
-      <img class="logo-main" src="ESCUDO2.png" alt="Escudo Falla Rubén Darío - Fray Luis Colomer">
-      <h1>Falla Rubén Darío - Fray Luis Colomer</h1>
-      <div class="subtitle">Valencia</div>
-
-      <div class="cta-buttons">
-        <a href="actividades.html">
-          <i class="fa-solid fa-calendar-days"></i> Ver actividades
-        </a>
-        <a href="https://instagram.com/fallarubendario/" target="_blank">
-          <i class="fa-brands fa-instagram"></i> Instagram
-        </a>
-        <a href="https://facebook.com/dariocolomer" target="_blank">
-          <i class="fa-brands fa-facebook"></i> Facebook
-        </a>
-         <a href="https://www.tiktok.com/@fallarubendario" target="_blank">
-        <i class="fa-brands fa-tiktok"></i> TikTok
-         </a>
-        <a href="mailto:secretaria_rudayfraluco@hotmail.com">
-          <i class="fa-solid fa-envelope"></i> + INFO E-MAIL
-       
-        </a>
-       
-     
-
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="card">
-        <h2>Bienvenidos</h2>
-        <p>
-          Consulta nuestras actividades, síguenos en redes sociales y mantente al día
-          de toda la actualidad de la falla desde esta web oficial.
-        </p>
-      </div>
-    </section>
-  </main>
- <!-- <section class="section">
-<div class="card countdown-card">
-    <h2>Cuenta atrás para Fallas 2027</h2>
-<p id="countdown-text" class="countdown-text">
-🔥 Faltan...
-</p>
-    <div id="countdown" class="countdown">
-      <div><span id="days">0</span><small>días</small></div>
-      <div><span id="hours">0</span><small>horas</small></div>
-      <div><span id="minutes">0</span><small>min</small></div>
-      <div><span id="seconds">0</span><small>seg</small></div> 
-    </div>
+    <nav class="menu" id="menu">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="actividades.html">Actividades</a>
+      <a href="https://instagram.com/fallarubendario/" target="_blank">Instagram</a>
+      <a href="https://facebook.com/dariocolomer" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@fallarubendario" target="_blank">TikTok</a>
+      <a href="mailto:secretaria_rudayfraluco@hotmail.com">Contacto</a>
+    </nav>
 
   </div>
-</section> -->
+</header>
 
-  <div class="footer">
-    <p id="countdown-text" class="countdown-text">
-🔥 Faltan...
-</p>
+<main>
+
+<section class="hero">
+
+<img class="logo-main" src="ESCUDO2.png">
+
+<h1>Falla Rubén Darío - Fray Luis Colomer</h1>
+<div class="subtitle">Valencia</div>
+
+<div class="cta-buttons">
+
+<a href="actividades.html">
+<i class="fa-solid fa-calendar-days"></i> Ver actividades
+</a>
+
+<a href="https://instagram.com/fallarubendario/" target="_blank">
+<i class="fa-brands fa-instagram"></i> Instagram
+</a>
+
+<a href="https://facebook.com/dariocolomer" target="_blank">
+<i class="fa-brands fa-facebook"></i> Facebook
+</a>
+
+<a href="https://www.tiktok.com/@fallarubendario" target="_blank">
+<i class="fa-brands fa-tiktok"></i> TikTok
+</a>
+
+<a href="mailto:secretaria_rudayfraluco@hotmail.com">
+<i class="fa-solid fa-envelope"></i> + INFO
+</a>
+
+</div>
+
+</section>
+
+<section class="section">
+  <div class="card">
+    <h2>Bienvenidos</h2>
+    <p>
+      Consulta nuestras actividades y síguenos en redes sociales para no perderte nada.
+    </p>
   </div>
-<!--
-  <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-  -->
-  
+</section>
+
+</main>
+
+<div class="footer">
+  <p id="countdown-text" class="countdown-text">🔥 Faltan...</p>
+  <p>Web oficial de la falla</p>
+</div>
+
 <a href="https://www.google.com/maps?q=39.476928,-0.352430"
    class="maps-float"
-   target="_blank"
-   aria-label="Cómo llegar">
+   target="_blank">
    <i class="fa-solid fa-location-dot"></i>
 </a>
+
 <script>
 const menuToggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 const icon = menuToggle.querySelector("i");
 
 menuToggle.addEventListener("click", () => {
-
   menu.classList.toggle("show");
 
   if(menu.classList.contains("show")){
-    icon.classList.remove("fa-bars");
-    icon.classList.add("fa-xmark");
+    icon.classList.replace("fa-bars","fa-xmark");
   } else {
-    icon.classList.remove("fa-xmark");
-    icon.classList.add("fa-bars");
+    icon.classList.replace("fa-xmark","fa-bars");
   }
-
 });
 
 document.querySelectorAll(".menu a").forEach(link => {
   link.addEventListener("click", () => {
     menu.classList.remove("show");
-    icon.classList.remove("fa-xmark");
-    icon.classList.add("fa-bars");
+    icon.classList.replace("fa-xmark","fa-bars");
   });
 });
 </script>
+
 <script>
 const targetDate = new Date("March 15, 2027 00:00:00").getTime();
 
-function updateCountdown(){
+function updateCountdownText(){
   const now = new Date().getTime();
   const distance = targetDate - now;
+  const el = document.getElementById("countdown-text");
 
   if(distance <= 0){
-    document.getElementById("countdown").innerHTML =
-      "<div><span>🎆</span><small>¡Ya son Fallas!</small></div>";
+    el.textContent = "🎆 ¡Ya son Fallas!";
     return;
   }
 
   const days = Math.floor(distance / (1000*60*60*24));
- let text = "";
 
-if(days > 30){
-  text = "🔥 Faltan " + days + " días para Fallas";
-} else if(days > 7){
-  text = "🎆 ¡Ya queda poco! " + days + " días";
-} else if(days > 1){
-  text = "🔥 ¡Cuenta atrás final! " + days + " días";
-} else {
-  text = "🎉 ¡Mañana empiezan las Fallas!";
+  if(days > 30){
+    el.textContent = "🔥 Faltan " + days + " días para Fallas";
+  } else if(days > 7){
+    el.textContent = "🎆 ¡Ya queda poco! " + days + " días";
+  } else if(days > 1){
+    el.textContent = "🔥 ¡Cuenta atrás final! " + days + " días";
+  } else {
+    el.textContent = "🎉 ¡Mañana empiezan las Fallas!";
+  }
 }
 
-document.getElementById("countdown-text").textContent = text;
-  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-  document.getElementById("days").textContent = days;
-  document.getElementById("hours").textContent = hours;
-  document.getElementById("minutes").textContent = minutes;
-  document.getElementById("seconds").textContent = seconds;
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
+updateCountdownText();
+setInterval(updateCountdownText, 1000);
 </script>
+
 </body>
 </html>
-
-
-
-
 
 
 
