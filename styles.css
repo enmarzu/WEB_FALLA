@@ -332,3 +332,31 @@ h1{
   }
 
 }
+/* =========================
+   CUOTAS
+========================= */
+
+.fee-item{
+  background:rgba(255,255,255,0.14);
+  border-radius:14px;
+  padding:14px 16px;
+  margin-bottom:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+  transition:0.2s;
+}
+
+.fee-item:hover{
+  transform:scale(1.02);
+  background:rgba(255,255,255,0.2);
+}
+
+.fee-item strong{
+  display:block;
+  margin-bottom:6px;
+  font-size:17px;
+}
+
+.fee-item p{
+  margin:4px 0;
+  line-height:1.5;
+}
