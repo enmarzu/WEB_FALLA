@@ -350,14 +350,14 @@ h1{
   background:rgba(255,255,255,0.2);
 }
 
-.fee-item strong{
+.fee-item:strong{
   display:block;
   margin-bottom:6px;
   font-size:17px;
 color:#fff;
 }
 
-.fee-item p{
+.fee-item:p{
   margin:4px 0;
   line-height:1.5;
   opacity:0.9;   
