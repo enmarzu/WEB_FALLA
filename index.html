@@ -4,12 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Falla Rubén Darío - Fray Luis Colomer</title>
-  
+
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
-<canvas id="particles"></canvas>
+
 <body>
 
 <header class="topbar">
@@ -17,7 +16,7 @@
 
     <a href="index.html" class="brand">
       <img src="ESCUDO2.png">
-      Falla Rubén Darío
+      <span>Falla Rubén Darío - Fray Luis Colomer</span>
     </a>
 
     <button class="menu-toggle" id="menu-toggle">
@@ -25,13 +24,13 @@
     </button>
 
     <nav class="menu" id="menu">
-      <a href="index.html" class="active">Inicio</a>
-      <a href="actividades.html">Actividades</a>
-      <a href="https://instagram.com/fallarubendario/" target="_blank">Instagram</a>
-      <a href="https://facebook.com/dariocolomer" target="_blank">Facebook</a>
-      <a href="https://www.tiktok.com/@fallarubendario" target="_blank">TikTok</a>
+      <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Inicio</a>
+      <a href="actividades.html"><i class="fa-solid fa-calendar-days"></i> Actividades</a>
       <a href="cuotas.html"><i class="fa-solid fa-euro-sign"></i> Cuotas</a>
-      <a href="mailto:secretaria_rudayfraluco@hotmail.com">Contacto</a>
+      <a href="https://instagram.com/fallarubendario/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      <a href="https://facebook.com/dariocolomer" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+      <a href="https://www.tiktok.com/@fallarubendario" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+      <a href="mailto:secretaria_rudayfraluco@hotmail.com"><i class="fa-solid fa-envelope"></i> Contacto</a>
     </nav>
 
   </div>
@@ -50,6 +49,10 @@
 
 <a href="actividades.html">
 <i class="fa-solid fa-calendar-days"></i> Ver actividades
+</a>
+
+<a href="cuotas.html">
+<i class="fa-solid fa-euro-sign"></i> Cuotas
 </a>
 
 <a href="https://instagram.com/fallarubendario/" target="_blank">
@@ -84,10 +87,9 @@
 </main>
 
 <div class="footer">
-  <p id="countdown-text" class="countdown-text">🔥 Faltan...</p>
-  <p>Web oficial de la falla</p>
+  🔥 Web oficial de la falla
 </div>
-<!-- <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank" aria-label="WhatsApp"> <i class="fa-brands fa-whatsapp"></i> </a> -->
+
 <a href="https://www.google.com/maps?q=39.476928,-0.352430"
    class="maps-float"
    target="_blank">
@@ -117,81 +119,6 @@ document.querySelectorAll(".menu a").forEach(link => {
 });
 </script>
 
-<script>
-const targetDate = new Date("March 15, 2027 00:00:00").getTime();
-
-function updateCountdownText(){
-  const now = new Date().getTime();
-  const distance = targetDate - now;
-  const el = document.getElementById("countdown-text");
-
-  if(distance <= 0){
-    el.textContent = "🎆 ¡Ya son Fallas!";
-    return;
-  }
-
-  const days = Math.floor(distance / (1000*60*60*24));
-
-  if(days > 30){
-    el.textContent = "🔥 Faltan " + days + " días para Fallas";
-  } else if(days > 7){
-    el.textContent = "🎆 ¡Ya queda poco! " + days + " días";
-  } else if(days > 1){
-    el.textContent = "🔥 ¡Cuenta atrás final! " + days + " días";
-  } else {
-    el.textContent = "🎉 ¡Mañana empiezan las Fallas!";
-  }
-}
-
-updateCountdownText();
-setInterval(updateCountdownText, 1000);
-</script>
-<script>
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<80;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    size:Math.random()*3+1,
-    speedY:Math.random()*1+0.5
-  });
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle="rgba(255,255,255,0.5)";
-
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-    ctx.fill();
-
-    p.y -= p.speedY;
-
-    if(p.y < 0){
-      p.y = canvas.height;
-      p.x = Math.random()*canvas.width;
-    }
-  });
-
-  requestAnimationFrame(draw);
-}
-
-draw();
-
-window.addEventListener("resize",()=>{
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-</script>
 </body>
 </html>
 
