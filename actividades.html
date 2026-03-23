@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Actividades - Falla Rubén Darío - Fray Luis Colomer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
 
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -24,17 +24,20 @@
       <nav class="menu" id="menu">
         <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
         <a href="actividades.html" class="active"><i class="fa-solid fa-calendar-days"></i> Actividades</a>
+        <a href="cuotas.html"><i class="fa-solid fa-euro-sign"></i> Cuotas</a>
         <a href="https://instagram.com/fallarubendario/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
         <a href="https://facebook.com/dariocolomer" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
-        <a href="https://www.tiktok.com/@fallarubendario" target="_blank"> <i class="fa-brands fa-tiktok"></i> TikTok </a>
+        <a href="https://www.tiktok.com/@fallarubendario" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
         <a href="mailto:secretaria_rudayfraluco@hotmail.com"><i class="fa-solid fa-envelope"></i> Contacto</a>
       </nav>
     </div>
   </header>
 
   <main class="page">
-    <h1>Actividades</h1>
-    <div class="subtitle">Consulta aquí el calendario oficial de la falla</div>
+    <div class="hero-title">
+      <h1>Actividades</h1>
+      <p>Consulta aquí el calendario oficial de la falla</p>
+    </div>
 
     <div class="calendar-box">
       <div class="calendar">
@@ -50,44 +53,39 @@
   <div class="footer">
     📅 Calendario oficial de actividades
   </div>
-<!--
-  <a href="https://wa.me/34660959480" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
+
+  <a href="https://www.google.com/maps?q=39.476928,-0.352430"
+     class="maps-float"
+     target="_blank"
+     aria-label="Cómo llegar">
+    <i class="fa-solid fa-location-dot"></i>
   </a>
-  -->
-<a href="https://www.google.com/maps?q=39.476928,-0.352430"
-   class="maps-float"
-   target="_blank"
-   aria-label="Cómo llegar">
-   <i class="fa-solid fa-location-dot"></i>
-</a>
-<script>
-const menuToggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("menu");
-const icon = menuToggle.querySelector("i");
 
-menuToggle.addEventListener("click", () => {
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    const icon = menuToggle.querySelector("i");
 
-  menu.classList.toggle("show");
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
 
-  if(menu.classList.contains("show")){
-    icon.classList.remove("fa-bars");
-    icon.classList.add("fa-xmark");
-  } else {
-    icon.classList.remove("fa-xmark");
-    icon.classList.add("fa-bars");
-  }
+      if(menu.classList.contains("show")){
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+      } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+      }
+    });
 
-});
-
-document.querySelectorAll(".menu a").forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("show");
-    icon.classList.remove("fa-xmark");
-    icon.classList.add("fa-bars");
-  });
-});
-</script>
+    document.querySelectorAll(".menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("show");
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+      });
+    });
+  </script>
 
 </body>
 </html>
