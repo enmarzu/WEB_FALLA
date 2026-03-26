@@ -531,4 +531,59 @@ color:#fff;
     text-align:center;
   }
 }
+.calculator-result{
+  margin-top:20px;
+}
 
+.result-card{
+  background:white;
+  color:black;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  animation:fadeIn 0.4s ease;
+  text-align:center;
+}
+
+.result-card h3{
+  margin-top:0;
+  margin-bottom:10px;
+}
+
+.result-badge{
+  display:inline-block;
+  background:#eee;
+  padding:6px 12px;
+  border-radius:12px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.result-row{
+  margin:6px 0;
+  font-size:16px;
+}
+
+.result-note{
+  margin-top:12px;
+  font-size:14px;
+  opacity:0.8;
+}
+
+/* colores por tipo */
+.result-infantil{
+  border-top:5px solid #4CAF50;
+}
+
+.result-juvenil{
+  border-top:5px solid #FF9800;
+}
+
+.result-adulto{
+  border-top:5px solid #F44336;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
