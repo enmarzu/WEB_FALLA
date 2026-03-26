@@ -198,7 +198,7 @@ function calculateAge(birthDate, referenceDate){
 function getReferenceDates(){
   const today = new Date();
   const year = today.getFullYear();
-  const cutoff = new Date(year, 2, 20);
+  const cutoff = new Date(year, 2, 20); // 20 marzo
 
   return {
     general: today < cutoff ? new Date(year - 1, 11, 31) : new Date(year, 11, 31),
@@ -244,7 +244,7 @@ function getFee(age, juvenileAge){
     };
   }
 
-  if(age <= 12){
+  if(age <= 13){
     if(juvenileAge >= 13){
       return {
         tramo:"13-19 años",
@@ -266,7 +266,7 @@ function getFee(age, juvenileAge){
 
   if(age <= 19){
     return {
-      tramo:"14-19 años",
+      tramo:"13-19 años",
       mensual:"21,63€",
       anual:"259,56€",
       tipo:"juvenil",
@@ -344,4 +344,4 @@ document.getElementById("calculate-fee").addEventListener("click", () => {
 </script>
 
 </body>
-</html>
+</html>,
