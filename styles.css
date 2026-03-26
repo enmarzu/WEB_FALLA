@@ -449,4 +449,86 @@ color:#fff;
     text-align:center;
   }
 }
+/* RESULTADO CALCULADOR */
+
+.calculator-result{
+  margin-top:18px;
+  display:none;
+}
+
+.calculator-result.show{
+  display:block;
+}
+
+.result-card{
+  border-radius:18px;
+  padding:20px;
+  text-align:left;
+  box-shadow:0 10px 25px rgba(0,0,0,0.18);
+  background:rgba(255,255,255,0.14);
+}
+
+.result-card h3{
+  margin:0 0 14px 0;
+  font-size:22px;
+  text-align:center;
+}
+
+.result-badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.result-row{
+  margin:8px 0;
+  line-height:1.5;
+}
+
+.result-note{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,0.22);
+  font-size:14px;
+  opacity:0.95;
+}
+
+/* COLORES POR TRAMO */
+
+.result-infantil{
+  background:linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.10));
+}
+
+.result-infantil .result-badge{
+  background:#ffd166;
+  color:#222;
+}
+
+.result-juvenil{
+  background:linear-gradient(135deg, rgba(0,191,255,0.28), rgba(255,255,255,0.10));
+}
+
+.result-juvenil .result-badge{
+  background:#00c2ff;
+  color:white;
+}
+
+.result-adulto{
+  background:linear-gradient(135deg, rgba(126,87,255,0.35), rgba(255,255,255,0.10));
+}
+
+.result-adulto .result-badge{
+  background:#6c4cff;
+  color:white;
+}
+
+@media (max-width:768px){
+  .result-card{
+    padding:16px;
+    text-align:center;
+  }
+}
 
