@@ -372,4 +372,81 @@ color:#fff;
   z-index:-1;
   pointer-events:none;
 }
+/* =========================
+   CALCULADOR DE CUOTAS
+========================= */
+
+.calculator-card{
+  text-align:center;
+}
+
+.calculator-text{
+  margin:0 0 18px 0;
+  opacity:0.95;
+  line-height:1.5;
+}
+
+.calculator-form{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.calculator-input{
+  padding:14px 16px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  min-width:220px;
+  outline:none;
+}
+
+.calculator-button{
+  background:white;
+  color:black;
+  border:none;
+  border-radius:12px;
+  padding:14px 18px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+
+.calculator-button:hover{
+  transform:scale(1.03);
+  box-shadow:0 8px 22px rgba(0,0,0,0.2);
+}
+
+.calculator-result{
+  background:rgba(255,255,255,0.14);
+  border-radius:16px;
+  padding:18px;
+  line-height:1.6;
+  text-align:left;
+  max-width:700px;
+  margin:0 auto;
+}
+
+.calculator-result strong{
+  display:block;
+  margin-bottom:6px;
+  font-size:18px;
+}
+
+@media (max-width:768px){
+  .calculator-input,
+  .calculator-button{
+    width:100%;
+    max-width:320px;
+  }
+
+  .calculator-result{
+    text-align:center;
+  }
+}
 
