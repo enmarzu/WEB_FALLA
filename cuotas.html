@@ -77,24 +77,24 @@
       <h2>Infantil</h2>
 
       <div class="fee-item">
-        <strong>0 - 3 años</strong>
+        <strong>DE 2024 AL 2027 (de 0 - 2 años)</strong>
         <p>42€ anual</p>
       </div>
 
       <div class="fee-item">
-        <strong>4 - 6 años</strong>
+        <strong>DE 2020 AL 2023 (de 3 - 6 años)</strong>
         <p>10,83€/mes</p>
         <p>129,96€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>7 - 10 años</strong>
+        <strong>DE 2015 AL 2019(de 7 - 10 años)</strong>
         <p>12,83€/mes</p>
         <p>153,96€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>11 - 13 años</strong>
+        <strong>DE 20-03-2013 AL 19-03-2014 (de 11 a 12 años)</strong>
         <p>14,83€/mes</p>
         <p>177,96€/año</p>
       </div>
@@ -104,7 +104,7 @@
         <p><strong>Lotería de Navidad:</strong> 60€ o beneficio (12€)</p>
         <p><strong>Lotería del Niño:</strong> 30€ o beneficio (6€)</p>
         <p style="margin-top:10px;">
-          ℹ️ Navidad y Niño serán opcionales para los niños de 0 a 3 años.
+          ℹ️ Navidad y Niño serán opcionales para los niños de 0 a 2 años.
         </p>
       </div>
     </div>
@@ -113,13 +113,13 @@
       <h2>Juvenil / Adulto</h2>
 
       <div class="fee-item">
-        <strong>14 - 20 años</strong>
+        <strong>de 19 - 03 - 2014 AL 2006 (de 13 - 19 años)</strong>
         <p>21,63€/mes</p>
         <p>259,56€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>21 años en adelante</strong>
+        <strong>20 años en adelante</strong>
         <p>32,10€/mes</p>
         <p>385,20€/año</p>
       </div>
@@ -182,166 +182,163 @@ document.querySelectorAll(".menu a").forEach(link => {
 </script>
 
 <script>
-function calculateAgeAtDate(birthDate, referenceDate) {
+function calculateAge(birthDate, referenceDate){
   let age = referenceDate.getFullYear() - birthDate.getFullYear();
 
-  const monthDiff = referenceDate.getMonth() - birthDate.getMonth();
-  const dayDiff = referenceDate.getDate() - birthDate.getDate();
-
-  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+  if(
+    referenceDate.getMonth() < birthDate.getMonth() ||
+    (referenceDate.getMonth() === birthDate.getMonth() && referenceDate.getDate() < birthDate.getDate())
+  ){
     age--;
   }
 
   return age;
 }
 
-function getCurrentCutoffDate() {
+function getReferenceDates(){
   const today = new Date();
-  const currentYear = today.getFullYear();
-  return new Date(currentYear, 2, 20); // 20 de marzo del año actual
+  const year = today.getFullYear();
+  const cutoff = new Date(year, 2, 20);
+
+  return {
+    general: today < cutoff ? new Date(year - 1, 11, 31) : new Date(year, 11, 31),
+    juvenile: today < cutoff ? new Date(year - 1, 2, 20) : new Date(year, 2, 20)
+  };
 }
 
-function getGeneralReferenceDate() {
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const cutoffDate = getCurrentCutoffDate();
-
-  if (today < cutoffDate) {
-    return new Date(currentYear - 1, 11, 31); // 31/12 año anterior
-  }
-
-  return new Date(currentYear, 11, 31); // 31/12 año actual
+function formatDateES(date){
+  const d = String(date.getDate()).padStart(2, "0");
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const y = date.getFullYear();
+  return `${d}/${m}/${y}`;
 }
 
-function getJuvenileReferenceDate() {
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const cutoffDate = getCurrentCutoffDate();
-
-  if (today < cutoffDate) {
-    return new Date(currentYear - 1, 2, 20); // 20/03 año anterior
-  }
-
-  return new Date(currentYear, 2, 20); // 20/03 año actual
-}
-
-function formatDateES(date) {
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = date.getFullYear();
-  return `${day}/${month}/${year}`;
-}
-
-function getFeeByBirthDate(birthDate) {
-  const generalReferenceDate = getGeneralReferenceDate();
-  const juvenileReferenceDate = getJuvenileReferenceDate();
-
-  const generalAge = calculateAgeAtDate(birthDate, generalReferenceDate);
-  const juvenileAge = calculateAgeAtDate(birthDate, juvenileReferenceDate);
-
-  if (generalAge < 0) return null;
-
-  if (generalAge <= 3) {
+function getFee(age, juvenileAge){
+  if(age <= 2){
     return {
-      tramo: "0 a 3 años",
-      mensual: "—",
-      anual: "42€",
-      extra: "Lotería de Navidad y del Niño opcionales para niños de 0 a 3 años.",
-      edadMostrada: generalAge,
-      fechaReferencia: generalReferenceDate
+      tramo:"0-2 años",
+      mensual:"—",
+      anual:"42€",
+      tipo:"infantil",
+      nota:"Lotería de Navidad y del Niño opcional para este tramo."
     };
   }
 
-  if (generalAge >= 4 && generalAge <= 6) {
+  if(age <= 6){
     return {
-      tramo: "4 a 6 años",
-      mensual: "10,83€",
-      anual: "129,96€",
-      extra: "Lotería de Navidad: 60€ o beneficio (12€). Lotería del Niño: 30€ o beneficio (6€).",
-      edadMostrada: generalAge,
-      fechaReferencia: generalReferenceDate
+      tramo:"3-6 años",
+      mensual:"10,83€",
+      anual:"129,96€",
+      tipo:"infantil",
+      nota:"Lotería infantil: Navidad 60€ o beneficio (12€), Niño 30€ o beneficio (6€)."
     };
   }
 
-  if (generalAge >= 7 && generalAge <= 10) {
+  if(age <= 10){
     return {
-      tramo: "7 a 10 años",
-      mensual: "12,83€",
-      anual: "153,96€",
-      extra: "Lotería de Navidad: 60€ o beneficio (12€). Lotería del Niño: 30€ o beneficio (6€).",
-      edadMostrada: generalAge,
-      fechaReferencia: generalReferenceDate
+      tramo:"7-10 años",
+      mensual:"12,83€",
+      anual:"153,96€",
+      tipo:"infantil",
+      nota:"Lotería infantil: Navidad 60€ o beneficio (12€), Niño 30€ o beneficio (6€)."
     };
   }
 
-  if (generalAge >= 11 && generalAge <= 13) {
-    if (juvenileAge >= 14) {
+  if(age <= 13){
+    if(juvenileAge >= 14){
       return {
-        tramo: "14 a 20 años",
-        mensual: "21,63€",
-        anual: "259,56€",
-        extra: `Paso a juvenil aplicado por edad a fecha especial (${formatDateES(juvenileReferenceDate)}).`,
-        edadMostrada: juvenileAge,
-        fechaReferencia: juvenileReferenceDate
+        tramo:"14-20 años",
+        mensual:"21,63€",
+        anual:"259,56€",
+        tipo:"juvenil",
+        nota:"Cambio a juvenil aplicado por la regla especial de edad a 20 de marzo."
       };
     }
 
     return {
-      tramo: "11 a 13 años",
-      mensual: "14,83€",
-      anual: "177,96€",
-      extra: "Lotería de Navidad: 60€ o beneficio (12€). Lotería del Niño: 30€ o beneficio (6€).",
-      edadMostrada: generalAge,
-      fechaReferencia: generalReferenceDate
+      tramo:"11-13 años",
+      mensual:"14,83€",
+      anual:"177,96€",
+      tipo:"infantil",
+      nota:"Lotería infantil: Navidad 60€ o beneficio (12€), Niño 30€ o beneficio (6€)."
     };
   }
 
-  if (generalAge >= 14 && generalAge <= 20) {
+  if(age <= 20){
     return {
-      tramo: "14 a 20 años",
-      mensual: "21,63€",
-      anual: "259,56€",
-      extra: "Consultar también la lotería correspondiente de la comisión.",
-      edadMostrada: generalAge,
-      fechaReferencia: generalReferenceDate
+      tramo:"14-20 años",
+      mensual:"21,63€",
+      anual:"259,56€",
+      tipo:"juvenil",
+      nota:"Tramo juvenil."
     };
   }
 
   return {
-    tramo: "21 años en adelante",
-    mensual: "32,10€",
-    anual: "385,20€",
-    extra: "Consultar también la lotería correspondiente de la comisión.",
-    edadMostrada: generalAge,
-    fechaReferencia: generalReferenceDate
+    tramo:"21+ años",
+    mensual:"32,10€",
+    anual:"385,20€",
+    tipo:"adulto",
+    nota:"Lotería adultos: Navidad 125€ o beneficio (25€), Niño 60€ o beneficio (12€)."
   };
+}
+
+function getResultClass(tipo){
+  if(tipo === "infantil") return "result-infantil";
+  if(tipo === "juvenil") return "result-juvenil";
+  return "result-adulto";
 }
 
 document.getElementById("calculate-fee").addEventListener("click", () => {
   const input = document.getElementById("birthdate").value;
   const result = document.getElementById("calculator-result");
 
-  if (!input) {
-    result.innerHTML = "Por favor, selecciona una fecha de nacimiento.";
+  if(!input){
+    result.classList.add("show");
+    result.innerHTML = `
+      <div class="result-card">
+        <h3>Resultado</h3>
+        <div class="result-row">Por favor, selecciona una fecha de nacimiento.</div>
+      </div>
+    `;
     return;
   }
 
   const birthDate = new Date(input);
-  const fee = getFeeByBirthDate(birthDate);
+  const refs = getReferenceDates();
 
-  if (!fee) {
-    result.innerHTML = "La fecha introducida no es válida.";
+  const age = calculateAge(birthDate, refs.general);
+  const juvenileAge = calculateAge(birthDate, refs.juvenile);
+
+  if(age < 0){
+    result.classList.add("show");
+    result.innerHTML = `
+      <div class="result-card">
+        <h3>Resultado</h3>
+        <div class="result-row">La fecha introducida no es válida.</div>
+      </div>
+    `;
     return;
   }
 
+  const fee = getFee(age, juvenileAge);
+  const cardClass = getResultClass(fee.tipo);
+
+  result.classList.add("show");
   result.innerHTML = `
-    <strong>Resultado</strong>
-    Edad de referencia: ${fee.edadMostrada} años<br>
-    Fecha de referencia: ${formatDateES(fee.fechaReferencia)}<br>
-    Tramo: ${fee.tramo}<br>
-    Cuota mensual: ${fee.mensual}<br>
-    Cuota anual: ${fee.anual}<br><br>
-    ${fee.extra}
+    <div class="result-card ${cardClass}">
+      <h3>Tu cuota</h3>
+      <div class="result-badge">${fee.tramo}</div>
+
+      <div class="result-row"><strong>Edad general:</strong> ${age} años</div>
+      <div class="result-row"><strong>Referencia general:</strong> ${formatDateES(refs.general)}</div>
+      <div class="result-row"><strong>Edad especial juvenil:</strong> ${juvenileAge} años</div>
+      <div class="result-row"><strong>Referencia juvenil:</strong> ${formatDateES(refs.juvenile)}</div>
+      <div class="result-row"><strong>Cuota mensual:</strong> ${fee.mensual}</div>
+      <div class="result-row"><strong>Cuota anual:</strong> ${fee.anual}</div>
+
+      <div class="result-note">${fee.nota}</div>
+    </div>
   `;
 });
 </script>
