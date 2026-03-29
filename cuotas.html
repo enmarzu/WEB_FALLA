@@ -77,24 +77,24 @@
       <h2>Infantil</h2>
 
       <div class="fee-item">
-        <strong>0 - 2 años</strong>
+        <strong id="range-0-2">0 - 2 años</strong>
         <p>42€ anual</p>
       </div>
 
       <div class="fee-item">
-        <strong>3 - 6 años</strong>
+        <strong id="range-3-6">3 - 6 años</strong>
         <p>10,83€/mes</p>
         <p>129,96€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>7 - 10 años</strong>
+        <strong id="range-7-10">7 - 10 años</strong>
         <p>12,83€/mes</p>
         <p>153,96€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>11 - 13 años</strong>
+        <strong id="range-11-13">11 - 13 años</strong>
         <p>14,83€/mes</p>
         <p>177,96€/año</p>
       </div>
@@ -113,13 +113,13 @@
       <h2>Juvenil / Adulto</h2>
 
       <div class="fee-item">
-        <strong>14 - 19 años</strong>
+        <strong id="range-14-19">14 - 19 años</strong>
         <p>21,63€/mes</p>
         <p>259,56€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>20 años en adelante</strong>
+        <strong id="range-20-plus">20 años en adelante</strong>
         <p>32,10€/mes</p>
         <p>385,20€/año</p>
       </div>
@@ -318,11 +318,44 @@ document.getElementById("calculate-fee").addEventListener("click", () => {
     </div>
   `;
 });
-</script>
 
-</body>
-</html>
-});
+function getQuotaReferenceYear() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const cutoff = new Date(year, 2, 20); // 20 de marzo
+  return today < cutoff ? year - 1 : year;
+}
+
+function setBirthYearRanges() {
+  const refYear = getQuotaReferenceYear();
+
+  const ranges = {
+    "range-0-2": `(${refYear} a ${refYear - 2})`,
+    "range-3-6": `(${refYear - 3} a ${refYear - 6})`,
+    "range-7-10": `(${refYear - 7} a ${refYear - 10})`,
+    "range-11-13": `(${refYear - 11} a ${refYear - 13})`,
+    "range-14-19": `(${refYear - 14} a ${refYear - 19})`,
+    "range-20-plus": `(${refYear - 20} o anteriores)`
+  };
+
+  const labels = {
+    "range-0-2": "0 - 2 años",
+    "range-3-6": "3 - 6 años",
+    "range-7-10": "7 - 10 años",
+    "range-11-13": "11 - 13 años",
+    "range-14-19": "14 - 19 años",
+    "range-20-plus": "20 años en adelante"
+  };
+
+  Object.keys(ranges).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.innerHTML = `${labels[id]} <span class="birth-year-range">${ranges[id]}</span>`;
+    }
+  });
+}
+
+setBirthYearRanges();
 </script>
 
 </body>
