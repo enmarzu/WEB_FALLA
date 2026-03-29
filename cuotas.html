@@ -66,7 +66,7 @@
       </p>
 
       <p style="font-size:14px; opacity:0.85; margin-top:8px; line-height:1.5;">
-        *El paso de infantil (11-13) a juvenil se calcula con la edad a 20 de marzo: hasta el 19 de marzo se toma el 20 de marzo del año anterior y desde el 20 de marzo se toma el 20 de marzo del año actual.
+        *La excepción del cambio de 13 a 14 años se calcula con la edad a 20 de marzo: hasta el 19 de marzo se toma el 20 de marzo del año anterior y desde el 20 de marzo se toma el 20 de marzo del año actual.
       </p>
     </div>
   </section>
@@ -77,24 +77,24 @@
       <h2>Infantil</h2>
 
       <div class="fee-item">
-        <strong>DE 2024 AL 2027 (de 0 a 2 años)</strong>
+        <strong>0 - 2 años</strong>
         <p>42€ anual</p>
       </div>
 
       <div class="fee-item">
-        <strong>DE 2020 AL 2023 (de 3 a 6 años)</strong>
+        <strong>3 - 6 años</strong>
         <p>10,83€/mes</p>
         <p>129,96€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>DE 2015 AL 2019 (de 7 - 10 años)</strong>
+        <strong>7 - 10 años</strong>
         <p>12,83€/mes</p>
         <p>153,96€/año</p>
       </div>
 
       <div class="fee-item">
-        <strong>DE 20-03-2013 AL 19-03-2014 ( de 11 a 13 años)</strong>
+        <strong>11 - 13 años</strong>
         <p>14,83€/mes</p>
         <p>177,96€/año</p>
       </div>
@@ -113,7 +113,7 @@
       <h2>Juvenil / Adulto</h2>
 
       <div class="fee-item">
-        <strong>13 - 19 años</strong>
+        <strong>14 - 19 años</strong>
         <p>21,63€/mes</p>
         <p>259,56€/año</p>
       </div>
@@ -185,10 +185,10 @@ document.querySelectorAll(".menu a").forEach(link => {
 function calculateAge(birthDate, referenceDate){
   let age = referenceDate.getFullYear() - birthDate.getFullYear();
 
-  if(
+  if (
     referenceDate.getMonth() < birthDate.getMonth() ||
     (referenceDate.getMonth() === birthDate.getMonth() && referenceDate.getDate() < birthDate.getDate())
-  ){
+  ) {
     age--;
   }
 
@@ -198,23 +198,16 @@ function calculateAge(birthDate, referenceDate){
 function getReferenceDates(){
   const today = new Date();
   const year = today.getFullYear();
-  const cutoff = new Date(year, 2, 20); // 20 marzo
+  const cutoff = new Date(year, 2, 20); // 20 de marzo
 
   return {
     general: today < cutoff ? new Date(year - 1, 11, 31) : new Date(year, 11, 31),
-    juvenile: today < cutoff ? new Date(year - 1, 2, 20) : new Date(year, 2, 20)
+    special14: today < cutoff ? new Date(year - 1, 2, 20) : new Date(year, 2, 20)
   };
 }
 
-function formatDateES(date){
-  const d = String(date.getDate()).padStart(2, "0");
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const y = date.getFullYear();
-  return `${d}/${m}/${y}`;
-}
-
-function getFee(age, juvenileAge){
-  if(age <= 2){
+function getFee(ageGeneral, ageSpecial14){
+  if(ageGeneral <= 2){
     return {
       tramo:"0-2 años",
       mensual:"—",
@@ -224,7 +217,7 @@ function getFee(age, juvenileAge){
     };
   }
 
-  if(age <= 6){
+  if(ageGeneral >= 3 && ageGeneral <= 6){
     return {
       tramo:"3-6 años",
       mensual:"10,83€",
@@ -234,7 +227,7 @@ function getFee(age, juvenileAge){
     };
   }
 
-  if(age <= 10){
+  if(ageGeneral >= 7 && ageGeneral <= 10){
     return {
       tramo:"7-10 años",
       mensual:"12,83€",
@@ -244,10 +237,10 @@ function getFee(age, juvenileAge){
     };
   }
 
-  if(age <= 13){
-    if(juvenileAge >= 13){
+  if(ageGeneral >= 11 && ageGeneral <= 13){
+    if(ageSpecial14 >= 14){
       return {
-        tramo:"13-19 años",
+        tramo:"14-19 años",
         mensual:"21,63€",
         anual:"259,56€",
         tipo:"juvenil",
@@ -264,9 +257,9 @@ function getFee(age, juvenileAge){
     };
   }
 
-  if(age <= 19){
+  if(ageGeneral >= 14 && ageGeneral <= 19){
     return {
-      tramo:"13-19 años",
+      tramo:"14-19 años",
       mensual:"21,63€",
       anual:"259,56€",
       tipo:"juvenil",
@@ -307,10 +300,10 @@ document.getElementById("calculate-fee").addEventListener("click", () => {
   const birthDate = new Date(input);
   const refs = getReferenceDates();
 
-  const age = calculateAge(birthDate, refs.general);
-  const juvenileAge = calculateAge(birthDate, refs.juvenile);
+  const ageGeneral = calculateAge(birthDate, refs.general);
+  const ageSpecial14 = calculateAge(birthDate, refs.special14);
 
-  if(age < 0){
+  if(ageGeneral < 0){
     result.classList.add("show");
     result.innerHTML = `
       <div class="result-card">
@@ -321,7 +314,7 @@ document.getElementById("calculate-fee").addEventListener("click", () => {
     return;
   }
 
-  const fee = getFee(age, juvenileAge);
+  const fee = getFee(ageGeneral, ageSpecial14);
   const cardClass = getResultClass(fee.tipo);
 
   result.classList.add("show");
@@ -329,11 +322,8 @@ document.getElementById("calculate-fee").addEventListener("click", () => {
     <div class="result-card ${cardClass}">
       <h3>Tu cuota</h3>
       <div class="result-badge">${fee.tramo}</div>
-
-      <div class="result-row"><strong>Edad general:</strong> ${age} años</div>
       <div class="result-row"><strong>Cuota mensual:</strong> ${fee.mensual}</div>
       <div class="result-row"><strong>Cuota anual:</strong> ${fee.anual}</div>
-
       <div class="result-note">${fee.nota}</div>
     </div>
   `;
