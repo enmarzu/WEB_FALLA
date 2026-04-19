@@ -83,6 +83,7 @@
 
 <div class="footer">
   🔥 Web oficial de la falla
+   <span id="visit-counter">👀 Visitas: ...</span>
 </div>
 
 <a href="https://www.google.com/maps?q=39.476928,-0.352430"
@@ -178,6 +179,21 @@ function drawFireworks() {
 drawFireworks();
 
 window.addEventListener("resize", resizeCanvas);
+</script>
+<script>
+const namespace = "falla-ruben-dario"; // puedes cambiarlo si quieres
+const key = "visitas-web";
+
+fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("visit-counter").innerText =
+      "👀 Visitas: " + data.value;
+  })
+  .catch(() => {
+    document.getElementById("visit-counter").innerText =
+      "👀 Visitas: —";
+  });
 </script>
 
 </body>
